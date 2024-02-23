@@ -17,8 +17,7 @@ class IOSSettingsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = SettingsTheme.of(context);
-    final isLastNonDescriptive = tiles.last is SettingsTile &&
-        (tiles.last as SettingsTile).description == null;
+    final isLastNonDescriptive = tiles.isNotEmpty && tiles.last is SettingsTile && (tiles.last as SettingsTile).description == null;
     final scaleFactor = MediaQuery.of(context).textScaleFactor;
 
     return Padding(
@@ -63,19 +62,13 @@ class IOSSettingsSection extends StatelessWidget {
 
         var enableTop = false;
 
-        if (index == 0 ||
-            (index > 0 &&
-                tiles[index - 1] is SettingsTile &&
-                (tiles[index - 1] as SettingsTile).description != null)) {
+        if (index == 0 || (index > 0 && tiles[index - 1] is SettingsTile && (tiles[index - 1] as SettingsTile).description != null)) {
           enableTop = true;
         }
 
         var enableBottom = false;
 
-        if (index == tiles.length - 1 ||
-            (index < tiles.length &&
-                tile is SettingsTile &&
-                (tile).description != null)) {
+        if (index == tiles.length - 1 || (index < tiles.length && tile is SettingsTile && (tile).description != null)) {
           enableBottom = true;
         }
 
