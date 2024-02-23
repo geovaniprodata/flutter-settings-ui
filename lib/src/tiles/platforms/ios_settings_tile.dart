@@ -15,6 +15,7 @@ class IOSSettingsTile extends StatefulWidget {
     required this.activeSwitchColor,
     required this.enabled,
     required this.trailing,
+    this.arrow_navigation = false,
     Key? key,
   }) : super(key: key);
 
@@ -29,6 +30,7 @@ class IOSSettingsTile extends StatefulWidget {
   final bool enabled;
   final Color? activeSwitchColor;
   final Widget? trailing;
+  final bool arrow_navigation;
 
   @override
   _IOSSettingsTileState createState() => _IOSSettingsTileState();
@@ -136,7 +138,7 @@ class _IOSSettingsTileState extends State<IOSSettingsTile> {
             ),
             child: widget.value!,
           ),
-        if (widget.tileType == SettingsTileType.navigationTile)
+        if (widget.tileType == SettingsTileType.navigationTile && widget.arrow_navigation)
           Padding(
             padding: const EdgeInsetsDirectional.only(start: 6, end: 2),
             child: IconTheme(
